@@ -1,0 +1,20 @@
+<div class="buscador-content">
+    <div class="buscador-cell text">{{text}}</div>
+    <div class="buscador-cell">
+        <mat-form-field class="buscador">
+            <button mat-button matPrefix mat-icon-button>
+                <mat-icon matPrefix>search</mat-icon>
+            </button>
+            <input #buscadorSioCot matInput type="text" (keyup)="searchKeyUp($event)" (keydown)="handlerIgnored($event)" (focus)="txHandler(true)" (blur)="txHandler(false)" autocomplete="off" [(ngModel)]="strSearch">
+            <button mat-button *ngIf="strSearch" matSuffix mat-icon-button aria-label="Clear" (click)="limpiarInput()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <span *ngIf="searchResult" class="span-search">
+            <ul *ngIf="searchEnabled == true" class="ul-search mat-elevation-z1">
+                <li *ngFor="let search of searchResult;let idx = index;" [value]="idx" (click)="getDetalle(idx)" [class.selected]="search?.selected" [innerHTML]="search.c3"></li>
+                <li *ngIf="searchResult.length == 0" class="no-result">No hay resultados</li>
+            </ul>
+        </span>
+    </div>
+</div>

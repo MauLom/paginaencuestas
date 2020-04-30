@@ -1,0 +1,36 @@
+<ng-container *ngIf="dlog==undefined; else adjuntos">
+    <nav class="navbar navbar-toggleable navbar-inverse nav-header-sio mat-elevation-z3" id="barra">
+        <button mat-icon-button class="navbar-nav mr-0 btn-icon" id="idMenuPop" (click)="menuShow = !menuShow"
+        id="menuBoton"left>
+            <mat-icon id="idIconMenuPop" class="color-icon" >menu</mat-icon>
+        </button>
+        <a class="navbar-brand mx-10x cursor-pointer" data-title="WorkSite">
+            <img class="logo-icon noselect" [src]="logo" alt="">
+        </a>
+     
+    </nav>
+    <span *ngIf="menuShow" class="menu-fondo" (click)="menuShow = !menuShow"></span>
+    <div class="menu-sio" [ngClass]="[menuShow?'active':'hidden']">
+        <div class="container-menu" >
+            <div class="menu" *ngFor="let opcion of opciones">
+                <a routerLink="{{opcion.path}}" routerLinkActive="active" (click)="menuShow = !menuShow"
+                    [class.disabled]="opcion.disabled">
+                    <div class="table-sio vertical-middle h-100">
+                        <div class="cell-sio noselect"><i class="material-icons align-middle">{{opcion.icon}}</i></div>
+                        <div class="cell-sio noselect"><label>{{opcion.viewValue}}</label></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="main-sio">
+        <div class="workspace-sio">
+            <div class="contenido">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #adjuntos>
+    <router-outlet></router-outlet>
+</ng-template>

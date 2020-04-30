@@ -1,0 +1,12 @@
+<mat-toolbar id="navegacion" class="container-fluid">
+  <h3>Carpool </h3>
+  <button mat-button (click)=abrirModal() color="primary">
+    <mat-icon>directions_car</mat-icon>
+    Agregar nuevo auto
+  </button>
+</mat-toolbar>
+
+<ng-container *ngIf="dataGrid">
+<grid-copsis (rowSelected)="funcion($event)" [dataSource]="dataGrid"  [TotalRow]="8" emptyState="No hay autos disponibles">
+</grid-copsis>
+</ng-container>

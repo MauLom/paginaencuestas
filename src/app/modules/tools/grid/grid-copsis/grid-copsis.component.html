@@ -1,0 +1,436 @@
+<!-- Nuevo Grid póliza -->
+<div [id]="'dvGridContainer' + idGrid" *ngIf="dataSource && dataSource.length > 0" class="gridContainer" [ngStyle]="{'height': heightGrid == 0? 'auto': heightGrid+'px'}"
+  (window:resize)="onResize($event)">
+  <div class="table-sio w-100 h-100">
+    <div class="row-sio">
+      <div class="cell-sio" style=" vertical-align: top;">
+        <div class="gridContTable">
+          <div class="table-sio gridTable">
+            <ng-container *ngIf="dataSource[0]?.length > 0; else myheaderElse">
+              <div class="header-sio gridHead">
+                <div class="row-sio">
+                  <div class="cell-sio">
+                    <div [id]="'dvHeaderScroll' + idGrid" style="width: 100%; overflow: hidden;">
+                      <div [id]="'vwHeader' + idGrid" class="container-grid-sio" style="margin-left: 0px;">
+                        <div class="row liner gridCalcRow">
+                          <ng-container *ngFor="let header of dataSource[0]">
+                            <div *ngFor="let key of header | keys" [ngClass]="['gridColumnas'  + this.idGrid, header[key].className,'gdC-' + header[key].n,'px-5x']">
+                              <ng-container *ngIf="header[key]?.a; else NotMenuHeader">
+                                <button mat-icon-button class="nopadding" [matMenuTriggerFor]="menuHeader">
+                                  <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menuHeader="matMenu">
+                                  <ng-container *ngFor="let act of header[key].a | keys; let ai = index">
+                                    <button mat-menu-item (click)="onClickOptions(ai, header[key].a[act].p)">
+                                      <span>{{header[key].a[act].v}}</span>
+                                    </button>
+                                  </ng-container>
+                                </mat-menu>
+                              </ng-container>
+                              <ng-template #NotMenuHeader>
+                                <ng-container *ngIf="header[key]?.f && (header[key]?.f == true || header[key]?.f == 'true')">
+                                  <ng-container *ngIf="filtro != '' && fil_name == header[key]?.n; else filtroElse">
+                                    <ng-container *ngIf="filtro == 'desc'">
+                                      <mat-icon class="grid-search isActive" (click)="onclickFiltro(header[key]?.n)">arrow_downward</mat-icon>
+                                    </ng-container>
+                                    <ng-container *ngIf="filtro == 'asc'">
+                                      <mat-icon class="grid-search isActive" (click)="onclickFiltro(header[key]?.n)">arrow_upward</mat-icon>
+                                    </ng-container>
+                                  </ng-container>
+                                  <ng-template #filtroElse>
+                                    <mat-icon class="grid-search" (click)="onclickFiltro(header[key]?.n)">arrow_downward</mat-icon>
+                                  </ng-template>
+                                </ng-container>
+                                {{header[key].v}}
+                                <ng-container *ngIf="header[key]?.s && (header[key]?.s == true || header[key]?.s == 'true')">
+                                  <ng-container *ngIf="col_name == header[key]?.n; else buscarElse">
+                                    <mat-icon class="grid-search isActive" (click)="onclickSearch(key, header[key].v, header[key]?.n)">search</mat-icon>
+                                  </ng-container>
+                                  <ng-template #buscarElse>
+                                    <mat-icon class="grid-search" (click)="onclickSearch(key, header[key].v, header[key]?.n)">search</mat-icon>
+                                  </ng-template>
+                                </ng-container>
+                              </ng-template>
+
+
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #myheaderElse>
+              <div *ngIf="dataHeader && dataHeader.length > 0" class="header-sio gridHead">
+                <div class="row-sio">
+                  <div class="cell-sio">
+                    <div [id]="'dvHeaderScroll' + idGrid" style="width: 100%; overflow: hidden;">
+                      <div [id]="'vwHeader' + idGrid" class="container-grid-sio" style="margin-left: 0px;">
+                        <div class="row liner gridCalcRow">
+                          <ng-container *ngFor="let header of dataHeader">
+                            <div *ngFor="let key of header | keys" [ngClass]="['gridColumnas'  + this.idGrid,header[key].className,'gdC-' + header[key].n,'px-5x']">
+                              <ng-container *ngIf="header[key]?.a; else NotMenuHeader">
+                                <button mat-icon-button class="nopadding" [matMenuTriggerFor]="menuHeader">
+                                  <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menuHeader="matMenu">
+                                  <ng-container *ngFor="let act of header[key].a | keys; let ai = index">
+                                    <button mat-menu-item (click)="onClickOptions(ai, header[key].a[act].p)">
+                                      <span>{{header[key].a[act].v}}</span>
+                                    </button>
+                                  </ng-container>
+                                </mat-menu>
+                              </ng-container>
+                              <ng-template #NotMenuHeader>
+                                <ng-container *ngIf="header[key]?.f && (header[key]?.f == true || header[key]?.f == 'true')">
+                                  <ng-container *ngIf="filtro != '' && fil_name == header[key]?.n; else filtroElse">
+                                    <ng-container *ngIf="filtro == 'desc'">
+                                      <mat-icon class="grid-search isActive" (click)="onclickFiltro(header[key]?.n)">arrow_downward</mat-icon>
+                                    </ng-container>
+                                    <ng-container *ngIf="filtro == 'asc'">
+                                      <mat-icon class="grid-search isActive" (click)="onclickFiltro(header[key]?.n)">arrow_upward</mat-icon>
+                                    </ng-container>
+                                  </ng-container>
+                                  <ng-template #filtroElse>
+                                    <mat-icon class="grid-search" (click)="onclickFiltro(header[key]?.n)">arrow_downward</mat-icon>
+                                  </ng-template>
+                                </ng-container>
+                                {{header[key].v}}
+                                <ng-container *ngIf="header[key]?.s && (header[key]?.s == true || header[key]?.s == 'true')">
+                                  <ng-container *ngIf="col_name == header[key]?.n; else buscarElse">
+                                    <mat-icon class="grid-search isActive" (click)="onclickSearch(key, header[key].v, header[key]?.n)">search</mat-icon>
+                                  </ng-container>
+                                  <ng-template #buscarElse>
+                                    <mat-icon class="grid-search" (click)="onclickSearch(key, header[key].v, header[key]?.n)">search</mat-icon>
+                                  </ng-template>
+                                </ng-container>
+                              </ng-template>
+
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+            <div class="body-sio gridBody" *ngIf="dataSource[1]">
+              <ng-container *ngIf="dataSource[1].length > 0; else gridElse">
+                <div class="row-sio">
+                  <div class="cell-sio gridTd" style="vertical-align: top;">
+
+                    <div [id]="'idBody' + idGrid" [ngStyle]="{'width': '100%', 'overflow': 'auto', 'height': TotalRow > 0 && calcularHeight== true? ((TotalRow > dataSource[1].length ? dataSource[1].length : TotalRow) * heightRow) + 'px' : (heightGrid > 0 && calcularHeight == true? (heightGrid - (heightRow + 70))+'px' : 'auto')}"
+                      (scroll)="onScroll($event)">
+
+                      <div [id]="'idCont' + idGrid" class="container-grid-sio" [ngStyle]="{'margin-left': '0px'}">
+                          <div *ngFor="let body of dataSource[1]; let a = index" [ngClass]="['row',(a==0 && dataSource[0]?.length == 0 && !dataHeader ? 'no-liner': 'liner'),(body.C1?.key == rowSelectedItem? 'active':'')]"
+                            (click)="rowSelectedClick(body.C1?.key, a)">
+                            <div #MisColumns *ngFor="let key of body | keys; let ib = index" [ngClass]="[(dataSource[0]?.length > 0 ? dataSource[0][0][key].className : (dataHeader?.length > 0 ? dataHeader[0][key].className : 'col')),'gdC-' + (dataSource[0]?.length > 0 ? dataSource[0][0][key].n : (dataHeader?.length > 0 ? dataHeader[0][key].n : ib))]">
+                              <div class="aligner-sio">
+                                <div class="two-line">
+                                  <ng-container *ngIf="body[key].indcxc;">
+                                    <div class="table-sio seguimiento" (click)="clickSeguimiento(body.C1.key, a); $event.stopPropagation();">
+                                      <div class="row-sio">
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.p == 0">
+                                            <mat-icon class="indcxc gray-z5">event</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.p == 1">
+                                            <mat-icon class="indcxc green">event</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.p == 2">
+                                            <mat-icon class="indcxc yellow">event</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.c == 0">
+                                            <mat-icon class="indcxc gray-z5">email</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.c == 1">
+                                            <mat-icon class="indcxc green">email</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.c == 2">
+                                            <mat-icon class="indcxc blue-z2">email</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.b == 0">
+                                            <mat-icon class="indcxc gray-z5">forum</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.b == 1">
+                                            <mat-icon class="indcxc green">forum</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.a == 0">
+                                            <mat-icon class="indcxc gray-z5">attachment</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.a == 1">
+                                            <mat-icon class="indcxc green">attachment</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                      </div>
+                                      <div class="row-sio">
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.s == 0">
+                                            <mat-icon class="indcxc gray-z5">textsms</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.s == 1">
+                                            <mat-icon class="indcxc green">textsms</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.n == 0">
+                                            <mat-icon class="indcxc gray-z5">notifications</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.n == 1">
+                                            <mat-icon class="indcxc green">notifications</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.m == 0">
+                                            <mat-icon class="indcxc gray-z5">markunread_mailbox</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.m == 1">
+                                            <mat-icon class="indcxc green">markunread_mailbox</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                        <div class="cell-sio">
+                                          <ng-container *ngIf="body[key].indcxc.cat == 0">
+                                            <mat-icon class="indcxc gray-z5">credit_card</mat-icon>
+                                          </ng-container>
+                                          <ng-container *ngIf="body[key].indcxc.cat == 1">
+                                            <mat-icon class="indcxc green">credit_card</mat-icon>
+                                          </ng-container>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.a;">
+                                    <button mat-icon-button class="nopadding" [matMenuTriggerFor]="menu">
+                                      <mat-icon>more_horiz</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                      <ng-container *ngFor="let act of body[key].a | keys; let ai = index">
+                                        <button mat-menu-item (click)="onClickOptions(ai, body[key].a[act].p, body[key].a[act].v, a)">
+                                          <span>{{body[key].a[act].v}}</span>
+                                        </button>
+                                      </ng-container>
+                                    </mat-menu>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.lnk;">
+                                    <div [innerHTML]="body[key].lnk" class="lnk nopadding" (click)="onClickOptions(-1, body[key].p)"></div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.ck;">
+                                    <ng-container *ngIf="body[key]?.ck == 1 || body[key]?.ck == 'true' || body[key]?.ck == true; else checkBoxFalse">
+                                      <i class="material-icons green align-middle no-action">check_box</i>
+                                    </ng-container>
+                                    <ng-template #checkBoxFalse>
+                                      <i class="material-icons align-middle no-action">check_box_outline_blank</i>
+                                    </ng-template>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.rdReal;">
+                                    <mat-radio-button class="px-10x" color="primary" [value]="body[key].rdReal" [checked]="body[key].checked" [disabled]="body[key]?.disabled" (change)="rdReal(body[key])" [name]="'rd-' + ib">                                      
+                                    </mat-radio-button>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.ckReal;">
+                                      <mat-checkbox class="px-10x" color="primary" [checked]="body[key].checked" [disabled]="body[key]?.disabled" (change)="ckReal(body[key])" [name]="'ck-' + ib">                                      
+                                      </mat-checkbox>
+                                    </ng-container>
+                                  <ng-container *ngIf="body[key]?.ico;">
+                                    <ng-container *ngIf="body[key]?.click && body[key]?.click == true;else elseIcoSinClick">
+                                        <mat-icon class="cursor-pointer" [ngClass]="[body[key]?.class]" (click)="onClickOptions(-1,body[key]?.key, '', a)">{{body[key]?.ico[0].n}}</mat-icon>
+                                    </ng-container>
+                                    <ng-template #elseIcoSinClick>
+                                        <mat-icon class="no-action" [ngClass]="[body[key]?.class]">{{body[key]?.ico[0].n}}</mat-icon>
+                                    </ng-template>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.img;">
+                                    <img [src]="[body[key]?.img[0].src]" [ngClass]="[body[key]?.img[0].className]"
+                                      class="no-action" />
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.photo;">
+                                    <img [src]="[body[key]?.photo]" class="img-photo no-action" />
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.svg;">
+                                    <img [src]="[body[key]?.svg]" class="img-svg no-action" />
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.png;">
+                                    <img [src]="[body[key]?.png]" class="img-png no-action" />
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.v;">
+                                    <p [innerHTML]="body[key].v" [title]="body[key].v" class="nopadding no-action"></p>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.ren;">
+                                    <p [innerHTML]="body[key].ren" class="nopadding no-action"></p>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.p;">
+                                    <p [innerHTML]="body[key].p" [title]="body[key].p" class="nopadding no-action"></p>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.salud;">
+                                    <div class="container-salud no-action">
+                                      <img [src]="[body[key].salud]">
+                                      <div class="salud-number">{{body[key].saludParam}}</div>
+                                    </div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.textColor;">
+                                    <p [innerHTML]="body[key].textColor" class="nopadding textColor no-action"
+                                      [ngStyle]="{'color': body[key].color}"></p>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.status;">
+                                    <div [ngClass]="[body[key].class]">{{({'1':'PENDIENTE','2':'PROCESO','3':'VIGENTE','4':'ANTICIPADA','5':'GRACIA','6':'DESPROTEGIDA','7':'VENCIDA','8':'TERMINADA','9':'RENOVADA','10':'PRECANCELADA','11':'CANCELADA','12':'ACTIVO','13':'NO ACTIVO', '14':'ALTA', '15':'BAJA' }[body[key].status])}}</div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.statusEndoso;">
+                                    <div [ngClass]="[body[key].class]">{{({'1':'PENDIENTE','2':'PROCESO','3':'VIGENTE','4':'ANTICIPADO','5':'GRACIA','6':'DESPROTEGIDO','7':'VENCIDO','8':'TERMINADO','9':'RENOVADO','10':'PRECANCELADO','11':'CANCELADO',
+                                      '12':'ACTIVO','13':'BAJA'}[body[key].statusEndoso])}}
+                                    </div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.statusColectividadAuto || body[key]?.statusColectividadAuto==0;">
+                                    <div [ngClass]="[body[key].class]">{{({'0':'CAPTURA','1':'PENDIENTE','2':'PROCESO','3':'VIGENTE','4':'ANTICIPADA','5':'GRACIA','6':'DESPROTEGIDA','7':'VENCIDA','8':'TERMINADA','9':'RENOVADA','10':'PRECANCELADA','11':'CANCELADA',
+                                      '13':'BAJA'}[body[key].statusColectividadAuto])}}
+                                    </div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.statusAseg;">
+                                    <div [ngClass]="[body[key].class]">{{({'1':'PENDIENTE','2':'PROCESO','3':'VIGENTE','4':'ANTICIPADA','5':'GRACIA','6':'DESPROTEGIDA','7':'VENCIDA','8':'TERMINADA','9':'RENOVADA','10':'PRECANCELADA','11':'CANCELADA','12':'ACTIVO','13':'BAJA'}[body[key].statusAseg])}}</div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.boton;">
+                                    <div class="btn-pendiente">{{body[key]?.boton}}</div>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.adjunto;">
+                                    <mat-icon [ngClass]="[body[key].class]">{{body[key].adjunto}}</mat-icon>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.checkbox">                                    
+                                        <mat-checkbox [checked]="body[key]?.checkbox.value" color="primary" (change)="verificarCambio($event,body[key]?.checkbox.key)"></mat-checkbox>                                    
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.checkboxOther">
+                                      <ng-container *ngIf="body[key]?.checkboxOther.disabled; else conCheckbox">
+                                          <i class="material-icons align-middle no-action">check_box_outline_blank</i>
+                                      </ng-container>
+                                      <ng-template #conCheckbox>
+                                          <mat-checkbox [checked]="body[key]?.checkboxOther.value" color="primary" (change)="verificarCambio($event,body[key]?.checkboxOther.key)"></mat-checkbox>
+                                      </ng-template>                                      
+                                    </ng-container>
+                                  <ng-container *ngIf="body[key]?.endosos;">
+                                    <span>
+                                      <label class="orange font-500">{{body[key].endosos.substring(0,
+                                        body[key].endosos.indexOf('/'))}}</label>&nbsp;/&nbsp;
+                                      <label class="green font-500">{{body[key].endosos.substring(body[key].endosos.indexOf('/')+1,
+                                        body[key].endosos.length)}}</label>
+                                    </span>
+                                  </ng-container>
+                                  <ng-container *ngIf="body[key]?.radio;">
+                                    <mat-radio-button color="primary" [value]="body[key].radio" (click)="clickRadioSelected($event)"></mat-radio-button>
+                                  </ng-container>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="sio-circle-space">
+                              <div class="sio-circle"></div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-template #gridElse>
+                <div class="row-sio">
+                  <div class="cell-sio gridTd" style="vertical-align: top;">
+                    <div class="liner-emptyState" [ngStyle]="{'height': (TotalRow > 0 ? (TotalRow * 46) + 'px' : 'auto')}"
+                      (scroll)="onScroll($event)">
+                      <div [id]="'idCont' + idGrid" class="container-grid-sio" style="margin-left: 0px; height:100%;">
+                        <table style="width: 100%; height: 100%;">
+                          <tr>
+                            <td class="sin-resultados">
+                              <ng-container *ngIf="imageEmptyState != ''; else textoEmptyState">
+                                <img [src]="imageEmptyState">
+                              </ng-container>
+                              <ng-template #textoEmptyState>
+                                <label class="emptyState">{{emptyState}}</label>
+                                <label class="emptyStateButton" *ngIf="emptyStateButton != ''">
+                                  <mat-icon>playlist_add</mat-icon>{{emptyStateButton}}
+                                </label>
+                              </ng-template>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row-sio">
+      <div class="cell-sio">
+        <div class="table-sio gridTableFooter">
+          <div class="body-sio gridBody" *ngIf="dataSource[1]">
+            <ng-container *ngIf="dataSource[2]">
+              <div class="row-sio" *ngIf="dataSource[2].length > 0">
+                <div class="cell-sio gridTdFooter">
+                  <div class="table-sio w-100 h-100">
+                    <div class="row-sio">
+                      <div class="cell-sio w-30 px-15x" *ngIf="isVisible == true && this.col_name != ''">
+                        <div class="table-sio w-100 h-100">
+                          <div class="cell-sio align-bottom">
+                            <mat-form-field class="w-100">
+                              <button mat-button matPrefix mat-icon-button aria-label="Buscar" (click)="onclickLupa()">
+                                <mat-icon>search</mat-icon>
+                              </button>
+                              <input matInput [myFocusElement]="myFocusTriggeringEventEmitter" placeholder="{{inputSearch}}"
+                                [(ngModel)]="buscar" style="width: 300px;" (blur)="onBlurSearch()" (keyup)="search($event)" />
+                              <button mat-button matSuffix mat-icon-button aria-label="Limpiar" (click)="onclickReset()">
+                                <mat-icon>close</mat-icon>
+                              </button>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cell-sio" *ngIf="isDownloadEnabled == true">
+                        <div class="table-sio float-right h-100">
+                          <div class="cell-sio align-middle">
+                            <button mat-button (click)="onClickDownload()">
+                              <mat-icon>get_app</mat-icon>
+                              &nbsp;Descargar
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cell-sio w-45 px-15x">
+                        <div class="table-sio float-right h-100">
+                          <div class="cell-sio align-middle">
+                            <button mat-icon-button (click)="onClickBack(dataSource[2][0].back, dataSource[2][0].saltos)"
+                              [disabled]="dataSource[2][0].back == 0? true : false">
+                              <mat-icon>navigate_before</mat-icon>
+                            </button>
+                          </div>
+                          <div class="cell-sio align-middle">
+                            <label class="mb-0x">{{dataSource[2][0].de}} DE {{dataSource[2][0].total}} REGISTROS</label>
+                          </div>
+                          <div class="cell-sio align-middle">
+                            <button mat-icon-button (click)="onClickNext(dataSource[2][0].next, dataSource[2][0].total, dataSource[2][0].saltos)"
+                              [disabled]="dataSource[2][0].next >= dataSource[2][0].total? true : false">
+                              <mat-icon>navigate_next</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

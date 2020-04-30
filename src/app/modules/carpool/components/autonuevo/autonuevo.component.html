@@ -1,0 +1,559 @@
+<form class="formulario" #usuario="ngForm">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <!-- <ng-template #template>          
+          <ng-container *ngIf="formulario1, else template2"> -->
+        <h1 mat-dialog-title> ¿Que funciones atiendes en el despacho? </h1>
+        <div>
+          <mat-checkbox>Ventas</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Cotizaciones</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Emisiones</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Cobranza</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Renovaciones</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Siniestros</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Conciliaciones</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Administracion General</mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox>Fianzas</mat-checkbox>
+        </div>
+        <div class="botones"">
+          <button type="submit" (click)="Salida()" id="result" mat-raised-button color="primary" [disabled]="usuario.invalid">
+            Continuar
+          </button>
+        </div>        
+        <!-- </ng-container> -->
+        <!-- <ng-template #formulario2> -->
+        <h1 mat-dialog-title> ¿Cual es tu opinion de nuestras aplicaciones moviles? </h1>
+        <div>
+          <mat-form-field>
+            <mat-label>quattroTask</mat-label>
+            <mat-select>
+              <mat-option value="option1">No la conozco</mat-option>
+              <mat-option value="option2">No se en que me puede ayudar</mat-option>
+              <mat-option value="option3">Las funciones que tiene no son suficientes</mat-option>
+              <mat-option value="option4">Me parece adecuada para su objetivo</mat-option>
+              <mat-option value="option3">Esta bien pero puede mejorar</mat-option>
+              <mat-option value="option6">No me parece que cumpla el objetivo</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>          
+          <mat-form-field>
+            <mat-label>MiPoliza</mat-label>
+            <mat-select>
+            <mat-option value="option1">No la conozco</mat-option>
+            <mat-option value="option2">No se en que me puede ayudar</mat-option>
+            <mat-option value="option3">Las funciones que tiene no son suficientes</mat-option>
+            <mat-option value="option4">Me parece adecuada para su objetivo</mat-option>
+            <mat-option value="option3">Esta bien pero puede mejorar</mat-option>
+            <mat-option value="option6">No me parece que cumpla el objetivo</mat-option>
+            </mat-select>            
+          </mat-form-field>
+        </div>
+        <div class="botones">
+          <button type="submit" (click)="Salida()" id="result" mat-raised-button color="primary" [disabled]="usuario.invalid">
+            Continuar
+          </button>
+        </div>
+        <!-- </ng-template>
+          <ng-template #formulario3>> -->
+        <!-- <h1 mat-dialog-title> En tu experiencia ¿Como calificarias la atencion del departamento de soporte? </h1>
+        <div>
+          <h6> En lo relacionado a la rapidez de respuesta </h6>
+          <button>
+            <mat-icon>
+              <span class="material-icons">
+                grade
+              </span>
+            </mat-icon>
+          </button>
+        </div>
+        <div>
+          <h6> En lo relacionado al seguimiento de tus casos </h6>
+          <button>
+            <mat-icon>
+              <span class="material-icons">
+                grade
+              </span>
+            </mat-icon>
+          </button>
+        </div> -->
+        <!-- </ng-template-->
+        <h1 mat-dialog-title> ¿Deseas comentar sobre que se podria mejorar en algun modulo en especial? </h1>
+        <div>          
+          <mat-form-field>
+            <mat-label> Selecciona </mat-label>
+            <mat-select>
+            <mat-option value="option1">Comentar en general de la aplicacion quattroCRM</mat-option>
+            <mat-option value="option2">Captura de polizas</mat-option>
+            <mat-option value="option3">Configuracion de paquetes</mat-option>
+            <mat-option value="option4">Importacion de Layouts</mat-option>
+            <mat-option value="option3">Cobranza</mat-option>
+            <mat-option value="option6">Renovaciones</mat-option>
+            <mat-option value="option7">Siniestros Salud</mat-option>
+            <mat-option value="option8">Siniestros Autos</mat-option>
+            <mat-option value="option9">Siniestros Diversos</mat-option>
+            <mat-option value="option10">Conciliaciones</mat-option>
+            <mat-option value="option11">Modulo de tareas CRM</mat-option>
+            <mat-option value="option12">Fianzas</mat-option>
+            <mat-option value="option13">App Movil quattroTask</mat-option>
+            <mat-option value="option14">App Movil MiPoliza</mat-option>
+            </mat-select>            
+          </mat-form-field>
+        </div>
+        <mat-form-field>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <div class= "row">
+          <div class="col p-4"    >
+          <button id="botonComentar" mat-raised-button color="primary">Comentar de otro modulo</button>
+          </div>
+
+          <div class="col p-4" >
+            <button type="submit" (click)="Salida()" id="result" mat-raised-button color="primary" [disabled]="usuario.invalid">
+              Continuar
+            </button>
+          </div>
+        </div>
+
+        
+        
+
+        <!--/ng-template>> -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="botones" ">
+    <button type="submit" (click)="Salida()" id="result" mat-raised-button color="primary" [disabled]="usuario.invalid">
+      Continuar
+    </button>
+  </div> -->
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1 mat-dialog-title> Captura de Usuario </h1>
+
+<form class="formulario" #usuario="ngForm">
+  <div class="container">
+    <div class="col-12">
+
+    <div class="row">
+        <div class="col p-2">
+          <!--<mat-form-field>
+            <div class="col p-2"> <input matInput id="email" name="email" placeholder="Cuenta de Correo/Usuario"
+                required ngModel [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></div>
+          </mat-form-field>-->
+        </div>
+
+        <div class="col p-2">
+          <!--<mat-checkbox>Pre-registro para agencias</mat-checkbox>-->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-2">
+          <!--<mat-form-field>
+            <input id="nombre" matInput placeholder="Nombre(s)" [(ngModel)]="nombre"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>-->
+        </div>
+        <div class="col p-2">
+          <!--<mat-form-field>
+            <div class="col p-2"><input id="appaterno" matInput placeholder="Apellido paterno" [(ngModel)]="appaterno"
+                [ngModelOptions]="{standalone: true}"></div>
+          </mat-form-field>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col p-2">
+          <!--<mat-form-field>
+            <input id="apmaterno" matInput placeholder="Apellido Materno" [(ngModel)]="apmaterno"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>-->
+        </div>
+        <div class="col p-2">
+          <!--<mat-form-field>
+            <input id="iniciales" matInput placeholder="Iniciales" [(ngModel)]="iniciales"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col p-2">
+          <!--<mat-form-field>
+            <input matInput id="telefono" name="telefono" placeholder="Celular" [(ngModel)]="telefono"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>-->
+        </div>
+
+        <div class="col p-2">
+        
+        </div>
+
+      </div>
+    </div>
+
+    <div class="botones" ">
+      <div class="col p-3">
+        <!--<button type="submit" (click)="Salida()" id="result" mat-raised-button color="primary"
+          [disabled]="usuario.invalid"> Guardar</button>
+        <button mat-raised-button color="warn">Cerrar</button>-->
+      </div>
+    </div>
+
+ 
+    <div class="imagen">
+      <img  id="image" src="assets/images/cotizacion/coberturas/20.png">
+    </div>
+
+    <h1 mat-dialog-title id="titulousuario">Hola: Nombre del Usuario</h1>
+    
+    Sabemos que falta mucho... Queremos acelerar el paso, pero
+      necesitamos de tu ayuda para orientar los esfuerzos en beneficios de todos.
+
+      <br /> <br /> Se parte de las mejoras tomando un par de minutos para contestar
+      las siguientes preguntas.
+    
+    <div class="botonInicio">
+      <button id="botoniniciar" mat-raised-button color="primary">INICIAR AHORA</button>
+      <button  id="recuerdame" mat-button color="primary">Recuerdarme mas tarde</button>
+    </div>
+  </div>
+
+  <div class="buton">
+    <button id="mañana" mat-button color="primary">Recuerdarme mañana</button>
+    <button id="participar" mat-button color="primary">No estoy interesado en participar</button>
+  </div>
+
+
+
+
+  
+    ¿Cuanto tiempo tienes usando quattroCRM?
+
+  <mat-radio-group aria-label="opciones">
+
+    <div class="row">
+      <mat-radio-button value="1">Menos de 1 mes</mat-radio-button>
+    </div>
+    <div class="row">
+      <mat-radio-button value="2">1 a 6 meses</mat-radio-button>
+    </div>
+
+  </mat-radio-group>
+  <div class="botonradio" ">
+    <button mat-raised-button color="primary">Continuar</button></div>
+
+  <div class="textofinal" ;">
+    <p>
+      <br />Muchas gracias por tu valioso tiempo, estamos
+      <br /> seguros que tu aportacion sera muy util para mejorar
+    </p>
+  </div>
+
+  <div class="botonterminar" ">
+    <button mat-raised-button color="primary">Terminar</button></div>
+
+    <div class="estrellas1">
+      <p>
+        En tu experiencia, ¿como calificarias la atencion del
+        departamento de soporte?
+      </p>
+      En lo relacionado a la atencion del ejecutivo
+      <div class="estrellasicon">
+        <div class="row">
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="textoestrellas">
+  
+        <div class="row">
+          <div class="col-2">
+            Malo
+          </div>
+          <div class="col-2">
+            Regular
+          </div>
+          <div class="col-2">
+            Bueno
+          </div>
+          <div class="col-2">
+            Muy bueno
+          </div>
+          <div class="col-2">
+            Excelente
+          </div>
+        </div>
+      </div>
+  
+      En lo relacionado a la capacidad del ejecutivo
+  
+      <div class="estrellasicon2">
+        <div class="row">
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button>
+              <mat-icon>
+                grade
+              </mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="textoestrellas">
+        <div class="row">
+          <div class="col-2">
+            Malo
+          </div>
+          <div class="col-2">
+            Regular
+          </div>
+          <div class="col-2">
+            Bueno
+          </div>
+          <div class="col-2">
+            Muy bueno
+          </div>
+          <div class="col-2">
+            Excelente
+          </div>
+        </div>
+      </div>
+      <div class="botonestrellas2" ">
+        <div class="col p-4"><button mat-raised-button color="primary">Continuar</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  <div class="estrellas2">
+    <p>
+      En tu experiencia, ¿como calificarias la atencion del
+      departamento de soporte?
+    </p>
+    En lo relacionado a la rapidez de la respuesta
+    <div class="estrellasicon1">
+      <div class="row">
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="textoestrellas">
+
+      <div class="row">
+        <div class="col-2">
+          Malo
+        </div>
+        <div class="col-2">
+          Regular
+        </div>
+        <div class="col-2">
+          Bueno
+        </div>
+        <div class="col-2">
+          Muy bueno
+        </div>
+        <div class="col-2">
+          Excelente
+        </div>
+      </div>
+    </div>
+
+    En lo relacionado al seguimientos de tus casos
+
+    <div class="estrellasicon2">
+      <div class="row">
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+        <div class="col-2">
+          <button mat-icon-button>
+            <mat-icon>
+              grade
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="textoestrellas">
+      <div class="row">
+        <div class="col-2">
+          Malo
+        </div>
+        <div class="col-2">
+          Regular
+        </div>
+        <div class="col-2">
+          Bueno
+        </div>
+        <div class="col-2">
+          Muy bueno
+        </div>
+        <div class="col-2">
+          Excelente
+        </div>
+      </div>
+    </div>
+    <div class="botonestrellas2" ">
+      <div class="col p-4"><button mat-raised-button color="primary">Continuar</button>
+      </div>
+    </div>
+  </div>
+</form>

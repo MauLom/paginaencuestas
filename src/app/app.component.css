@@ -1,0 +1,22 @@
+.logo{
+    padding-top: 10px;
+}
+.logoImage{
+    max-height: 40px;
+    margin: auto;
+    vertical-align: middle;
+}
+.grid-copsis::-webkit-scrollbar-thumb{
+    background: #dd0f0f;
+}
+
+.grid-copsis::-webkit-scrollbar{
+    background: #dd0f0f;
+}
+.row-sio::-webkit-scrollbar-thumb{
+    background: #dd0f0f;
+}
+
+.row-sio::-webkit-scrollbar{
+    background: #dd0f0f;
+}

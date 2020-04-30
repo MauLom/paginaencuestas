@@ -1,0 +1,234 @@
+/*Grid poliza*/
+div.gridContainer{
+    border-collapse: collapse;
+    max-width: 1300px;
+    min-width: 1050px;
+}
+div.gridContainer div.gridContTable{
+    width: 100%;
+    height: auto;
+}
+div.gridContainer div.gridContTable div.table-sio.gridTable{
+    width: 100%;
+    table-layout: fixed;
+}
+div.gridContainer div.table-sio.gridTableFooter{
+    width: 100%;
+}
+div.gridContainer .gridHead{
+    height: 46px;
+}
+div.gridContainer .gridTable .gridHead div.row-sio div.cell-sio .liner{
+    padding: 10px 0px 10px 0px;
+    color: #000;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+div.gridContainer .gridTable .gridBody div.row-sio .gridTd .row.liner{
+    position: relative;
+    border-top: 1px solid #c7c7c7;
+    box-sizing: border-box;
+    max-height: 46px;
+    min-height: 46px;
+    margin-right: 0px;
+    margin-left: 0px;
+    overflow: hidden;
+    cursor: pointer;
+}
+div.gridContainer .gridTable .gridBody div.row-sio .gridTd .row.liner .col .no-action{
+    pointer-events: none;
+}
+div.gridContainer .gridTable .gridBody div.row-sio .gridTd .row.liner .col:first-child,
+div.gridContainer .gridTable .gridHead div.row-sio .cell-sio .row.liner.gridCalcRow .col:first-child{
+    border-left: 4px solid transparent;
+}
+div.gridContainer .gridTable .gridBody div.row-sio .gridTd .row.liner:hover .col:first-child{
+    border-left: 4px solid #005AFC;
+}
+div.gridContainer .gridTable .gridBody div.row-sio .gridTd .row.liner.active .col:first-child{
+    border-left: 4px solid #005AFC;
+}
+div.gridContainer .gridTable .gridBody div.row-sio .gridTd .row.liner.active .sio-circle-space .sio-circle{
+    top: calc(calc((120vw - 50px) / 2) * -1);
+    left: -25px;
+    width: 120vw;
+    height: 120vw;
+    transition-duration: 450ms;
+    transform: scale(1);
+}
+.sio-circle-space{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    pointer-events: none;
+}
+.sio-circle{
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: opacity, webkit transform 0s cubic-bezier(0, 0, 0.2, 1);
+    transition: opacity, transform 0s cubic-bezier(0, 0, 0.2, 1);
+    transition: opacity, transform 0s cubic-bezier(0, 0, 0.2, 1), -webkit-transform 0s cubic-bezier(0, 0, 0.2, 1);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    background-color: rgba(0, 0, 0, .1);
+}
+div.gridContainer .gridTableFooter .gridBody div.row-sio .gridTdFooter{
+    position: relative;
+    border-top: 1px solid #c7c7c7;
+    box-sizing: border-box;
+    height: 70px;
+}
+div.gridContainer .grid-search { 
+    font-size: 18px;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #e0e0e0;
+    height: auto !important;
+    width: auto !important;
+    padding: 4px;
+}
+div.gridContainer .grid-search:hover{
+    cursor: pointer;
+}
+div.gridContainer .grid-search:active{
+    background-color: rgba(158, 158, 158, .2);
+    border-radius: 50%;
+    color: #4286f4;
+}
+div.gridContainer .grid-search.isActive{
+    color: #4286f4;
+}
+div.gridContainer .overflowBody {
+    overflow: auto;
+}
+div.gridContainer .lnk{
+    color: #3b73af;
+    cursor: pointer;
+}
+div.gridContainer .lnk:hover{
+    text-decoration: underline;
+}
+div.gridContainer .indcxc{
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+	vertical-align: middle;
+}
+div.gridContainer .nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+    max-height: 46px;
+}
+div.gridContainer .two-line{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+div.gridContainer .three-line{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+div.gridContainer .aligner-sio{
+    align-items: center;
+    display: grid;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+div.gridContainer .sin-resultados{
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+    font-size: 22pt;
+    padding: 15px;
+}
+div.gridContainer .fill{
+    height: 100%;
+    min-height: 100%;
+}
+div.gridContainer .container-grid-sio{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+ }
+div.gridContainer img.img-photo{
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+div.gridContainer img.img-min-photo{
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+}
+div.gridContainer img.img-svg{
+    max-height: 32px;
+}
+div.gridContainer img.img-png{
+    max-height: 32px;
+}
+
+div.gridContainer p.textColor{
+    font-weight: 500;
+}
+
+div.gridContainer div.container-salud{
+    position: relative;
+}
+
+div.gridContainer div.container-salud .salud-number{
+    position: absolute;
+    z-index: 1;
+    right: 4px;
+    top: 3px;
+    font-weight: 500;
+    font-size: 0.87rem;
+    width: 20px;
+    text-align: center;
+}
+.liner-emptyState{
+    width: 100%;
+    border-top: 1px solid #c7c7c7;
+    overflow: auto;
+}
+.emptyState{
+    font-weight: 500;
+    max-width: 600px;
+    display: block;
+    margin: auto;
+    color: #c3c3c3;
+}
+.emptyStateButton{
+    max-width: 600px;
+    display: block;
+    margin: auto;
+    color: #c3c3c3;
+}
+.seguimiento{
+    position: relative;
+}
+
+.grid-copsis::-webkit-scrollbar-thumb{
+    background: #dd0f0f;
+}
+
+.grid-copsis::-webkit-scrollbar{
+    background: #dd0f0f;
+}
+
+.row-sio::-webkit-scrollbar-thumb{
+    background: #dd0f0f;
+}
+
+.row-sio::-webkit-scrollbar{
+    background: #dd0f0f;
+}

@@ -1,0 +1,33 @@
+<div class="sio-overlay-container" [ngStyle]="{'display':(url != ''?'block':'none')}">
+    <div class="sio-overlay-backdrop sio-overlay-dark-backdrop sio-overlay-backdrop-showing" (click)="closeDialog()"></div>
+    <div class="sio-global-overlay-wrapper center">
+        <div class="sio-overlay-pane">
+            <div class="sio-dialog-container" > <!--loader [switch]="url==''?true:false"-->
+                <ng-container *ngIf="dialogTitle == true && titleAbsolute == true; else elseDialogTitle">
+                    <div [ngClass]="closeRight?'sio-dialog-title-right':'sio-dialog-title-absolute'"> 
+                        <div class="table-sio">
+                            <div class="cell-sio cell-close">
+                                <mat-icon (click)="closeDialog()">close</mat-icon>
+                            </div>
+                            <div class="cell-sio">
+                                <h5>{{title}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #elseDialogTitle>
+                    <div *ngIf="dialogTitle == true" class="sio-dialog-title">
+                        <h2>{{title}}</h2>
+                    </div>
+                </ng-template>
+                <div class="sio-dialog-body">
+                    <iframe [id]="id" #iframesio [src]="url | safe:'resourceUrl'" [ngClass]="[((dialogTitle == false && dialogAction == false) || titleAbsolute == true?'not-padding':'padding')]"
+                        [ngStyle]="{'width': width, 'height': height}"></iframe>
+                </div>
+                <div *ngIf="dialogAction == true" class="sio-dialog-action">
+                    <button mat-button (click)="closeDialog()">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
